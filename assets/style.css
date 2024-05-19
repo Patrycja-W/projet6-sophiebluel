@@ -264,10 +264,9 @@ input[type=submit] {
 	display: flex;
 }
 
-/*input[type=submit]:hover {
-    background-color:blue ;
-    color: #53af57;
-}*/
+input[type=submit]:hover {
+	background-color: rgba(14, 47, 40, 1);
+}
 
 .mdp {
 	display: flex;
