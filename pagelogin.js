@@ -1,3 +1,8 @@
+/*email: sophie.bluel@test.tld
+
+password: S0phie */
+
+
 /*===== VARIABLES =====*/
 const emailInput = document.querySelector("form #email");
 const passwordInput = document.querySelector("form #password");
@@ -62,7 +67,7 @@ loginForm.addEventListener("submit", (e) => {
         window.sessionStorage.setItem("loged", "true"); /* Ajout d'une indication de connexion */
         
         /* Redirection de l'utilisateur vers la page index.html après une authentification réussie */
-        window.location.href = "/index.html";
+        window.location.href = "./index.html";
     })
 
     /* Gestion des erreurs lors de la requête ou du traitement des données */

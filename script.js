@@ -1,6 +1,4 @@
-/*email: sophie.bluel@test.tld
 
-password: S0phie */
 
 // variables 
 
@@ -40,7 +38,7 @@ async function creationImage (element) {
         figure.appendChild(figcaption)
         gallery.appendChild(figure)
 }
-creationImage();
+
 
 
 // affichage dynamique des boutons de categories
@@ -92,3 +90,44 @@ async function filtrerCategories() {
     
 }
 filtrerCategories();
+
+// si utilisateur est connecte alors on affiche Logout
+
+
+const loged = window.sessionStorage.loged;
+const logout = document.querySelector(".logout")
+const modifier = document.querySelector(".modifier")
+
+if (loged == "true") {
+    logout.textContent = "logout"
+    logout.addEventListener("click", ()=>{
+        window.sessionStorage.loged = false;
+    } )
+    modifier.style.display = "flex";
+    filtres.style.display = "none"
+}
+
+
+// affichage de la modale au click sur modifier
+
+const containerModale = document.querySelector(".containerModale")
+
+modifier.addEventListener("click",() =>{
+    containerModale.style.display = "flex"
+})
+
+// fermer la modale au click sur la fleche
+
+const croix = document.querySelector(".containerModale .fa-xmark")
+
+croix.addEventListener("click",() =>{
+    containerModale.style.display = "none"
+})
+
+// fermer la modale au click sur les contours de la modale
+
+containerModale.addEventListener("click",(e)=>{
+    if (e.target.className == "containerModale") {
+        containerModale.style.display = "none"
+    }
+})
