@@ -24,6 +24,16 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
+
+a:hover {
+	color: #B1663C;
+}
+
+a {
+	color: black;
+	text-decoration-line: none;
+}
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -246,9 +256,7 @@ input[type=text], input[type=password] {
     width: 100%;
     height: 51px;
     margin: 6px 0px 26px 0px;
-    display: inline-block;
     border: none;
-    box-sizing: border-box;
 	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 
 }

@@ -1,3 +1,7 @@
+/*email: sophie.bluel@test.tld
+
+password: S0phie */
+
 // variables 
 
 const gallery = document.querySelector(".gallery");

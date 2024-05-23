@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script src="pagelogin.js" defer></script>
 	<meta charset="UTF-8">
 	<title>Page de connexion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,14 +26,16 @@
 
 
     <main class="container">
-        <form action="#">
+        <form method="post" >
             <div class="title">Log In</div>
                 
             <label><b>E-mail</b></label>
-            <input type="text" name="username">
+            <input type="text" id="email">
 
             <label><b>Mot de passe</b></label>
-            <input type="password" name="password">
+            <input type="password" id="password">
+
+            <p id="error-message"></p>
 
             <input type="submit" value='Se connecter' > 
             
