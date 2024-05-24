@@ -1,5 +1,3 @@
-
-
 // variables 
 
 const gallery = document.querySelector(".gallery");

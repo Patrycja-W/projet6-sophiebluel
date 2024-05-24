@@ -2,8 +2,6 @@
 
 password: S0phie */
 
-
-/*===== VARIABLES =====*/
 const emailInput = document.querySelector("form #email");
 const passwordInput = document.querySelector("form #password");
 const loginForm = document.querySelector("form");

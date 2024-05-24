@@ -272,6 +272,7 @@ input[type=submit] {
     cursor: pointer;
 	width: 179px;
 	display: flex;
+	justify-content: center;
 }
 
 input[type=submit]:hover {
@@ -300,72 +301,3 @@ input[type=submit]:hover {
   justify-content: center;
 }
 
-/* la modale */
-
-.containerModale {
-	margin: 0;
-	max-width: 1140px;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(128, 128, 128, 0.508);
-}
-
-.modale {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-	background-color: white;
-	width: 50%;
-	height: 650px;
-	position: relative;
-	border-radius: 2%;
-}
-
-.modale h3 {
-    font-size: 26px;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-.modale .fa-xmark {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-	display: flex;
-}
-.modale button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Syne';
-    font-weight: 700;
-    color: white;
-    background-color: #1D6154;
-    margin: 2em auto;
-    line-height: 20px;
-    width: 180px;
-    text-align: center;
-    border-radius: 60px;
-    border-style: none;
-    height: 40px;
-    cursor: pointer;
-}
-
-.modalphoto {
-    width: 75%;
-    height: 450px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: solid 2px rgba(128, 128, 128, 0.222);
-}
