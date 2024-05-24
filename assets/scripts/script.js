@@ -104,28 +104,3 @@ if (loged == "true") {
     modifier.style.display = "flex";
     filtres.style.display = "none"
 }
-
-
-// affichage de la modale au click sur modifier
-
-const containerModale = document.querySelector(".containerModale")
-
-modifier.addEventListener("click",() =>{
-    containerModale.style.display = "flex"
-})
-
-// fermer la modale au click sur la fleche
-
-const croix = document.querySelector(".containerModale .fa-xmark")
-
-croix.addEventListener("click",() =>{
-    containerModale.style.display = "none"
-})
-
-// fermer la modale au click sur les contours de la modale
-
-containerModale.addEventListener("click",(e)=>{
-    if (e.target.className == "containerModale") {
-        containerModale.style.display = "none"
-    }
-})
