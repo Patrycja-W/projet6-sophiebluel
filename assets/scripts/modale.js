@@ -139,3 +139,119 @@ console.log("id " + id );
         );
   }
 
+////////////////////////// ajout des projets dynamiquement
+
+const formAddWorks = document.querySelector("#formAddWorks");
+const file = document.querySelector("#file");
+const title = document.querySelector("#title");
+const category = document.querySelector("#categoryInput");
+const boutonAjouter = document.querySelector(".button-add-work");
+let fileRempli = false 
+let titleRempli = false
+let categoryRempli = false
+
+file.addEventListener("input" , () => {
+    console.log("change" + file);
+    if (file.value) {
+        fileRempli = true 
+    } else {
+        fileRempli = false
+    }
+    console.log(fileRempli);
+    if (fileRempli && titleRempli && categoryRempli) {
+        boutonAjouter.disabled = false
+    } else {
+        boutonAjouter.disabled = true
+    }
+})
+
+title.addEventListener("input" , () => {
+    console.log("change" + title);
+    if (title.value) {
+        titleRempli = true 
+    } else {
+        titleRempli = false
+    }
+    console.log(titleRempli);
+    if (fileRempli && titleRempli && categoryRempli) {
+        boutonAjouter.disabled = false
+    } else {
+        boutonAjouter.disabled = true
+    }
+})
+
+category.addEventListener("change" , () => {
+    console.log("change" + category);
+    if (category.value) {
+        categoryRempli = true 
+    } else {
+        categoryRempli = false
+    }
+    console.log(categoryRempli);
+    if (fileRempli && titleRempli && categoryRempli) {
+        boutonAjouter.disabled = false
+    } else {
+        boutonAjouter.disabled = true
+    }
+})
+
+formAddWorks.addEventListener("submit" , (e) => {
+    e.preventDefault();
+
+    const valeurTitle = title.value;
+    const valeurCategory = category.value;  
+    const valeurImage = file.value;
+    console.log(file);
+    console.log(title);
+    console.log(category);
+    console.log(valeurTitle);
+    console.log(valeurCategory);
+    console.log(valeurImage);
+
+    const donneesFormulaires = new FormData();
+
+    donneesFormulaires.append("category" , valeurCategory);
+    donneesFormulaires.append("image", file.files[0]); 
+    donneesFormulaires.append("title" , valeurTitle)
+    console.log(donneesFormulaires.get("category"));
+    console.log(donneesFormulaires.get("image"));
+    console.log(donneesFormulaires.get("title"));
+
+    const headerPost = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+          "accept": "application/json"
+        },
+        body: donneesFormulaires,
+      };
+
+      fetch("http://localhost:5678/api/works", 
+       headerPost 
+    )
+      .then(async (response) => {
+        console.log(response);
+        if (!response.ok) {
+       
+            const error = await response.json();
+            throw new Error(`Erreur lors de la requête : ${error.message}`);
+        }
+        return response.json(); 
+    })
+    
+    
+    .then((data) => {
+     
+    console.log(data);
+    
+    })
+    
+    
+    .catch((error) => {
+        console.error("Une erreur s'est produite", error);
+    });
+
+})
+
+
