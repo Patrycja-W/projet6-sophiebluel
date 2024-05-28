@@ -77,13 +77,15 @@ toutLesProjetsModale();
 
 // affichage des projets dans le DOM,boucle forEach pour recuperer chaque element du tableau et exécute la fonction de rappel définie
 
-async function creationTableauProjets () {
+async function creationTableauModale () {
+    modalePhotos.innerHTML = "";
     const tableau = await toutLesProjetsModale()
     tableau.forEach(element => {
         creationImagesModale(element)
     });
+    
 }
-creationTableauProjets();
+creationTableauModale();
 
 
 async function creationImagesModale (element) {
@@ -104,4 +106,36 @@ async function creationImagesModale (element) {
         poubelle.appendChild(iconePoubelle)
        
         modalePhotos.appendChild(figure)
+
+        poubelle.addEventListener("click", () =>{
+            // console.log(element.id)
+            deleteWork(element.id);
+        })
 }
+
+
+////////////////////////// suppression des projets 
+const token = window.sessionStorage.token;
+
+
+const header = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    mode: "cors",
+    credentials: "same-origin",
+  };
+
+function deleteWork(id) {
+console.log("id " + id );
+        fetch(`http://localhost:5678/api/works/${id}`, header).then(
+          (response) => {
+            console.log(response);
+            creationTableauModale();
+            creationTableauPagePrincipale();
+          }
+        );
+  }
+

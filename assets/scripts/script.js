@@ -14,13 +14,14 @@ toutLesProjets();
 
 // affichage des works dans le DOM,boucle forEach pour recuperer chaque element du tableau et exécute la fonction de rappel définie
 
-async function creationTableau () {
+async function creationTableauPagePrincipale () {
+    gallery.innerHTML = "";
     const tableau = await toutLesProjets()
     tableau.forEach(element => {
         creationImage(element)
     });
 }
-creationTableau();
+creationTableauPagePrincipale();
 
 
 async function creationImage (element) {
@@ -81,7 +82,7 @@ async function filtrerCategories() {
             });
             
            } else{
-            creationTableau();
+            creationTableauPagePrincipale();
            }
         })
     });

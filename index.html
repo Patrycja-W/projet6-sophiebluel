@@ -37,8 +37,21 @@
                 <i class="fa-solid fa-xmark"></i>
             </div>
             <h3>Ajout photo</h3>
-            <div class="ajoutPhotos"></div>
-            <button class="addPhotoValider">Valider</button>
+			<form id="formAddWorks">
+				<div class="containerAjouterPhoto">
+					<i class="fa-regular fa-image"></i>
+					<label for="file" class="labelFile">+ Ajouter photo</label>
+					<p>jpg, png : 4mo max</p>
+					<input type="file" name="image" id="file" accept="image/jpg, image/png" required>
+					<img id="previewImage" src="#" alt="Aperçu de l'image">
+				</div>
+				<label for="title">Titre</label>
+				<input type="text" name="title" id="title" required>
+				<label for="categoryInput">Catégorie</label>
+				<select id="categoryInput" name="category" required>
+				</select>
+			</form>
+				<button type="submit" class="button-add-work">Valider</button>
         </div>
     </section>
 <!-- La page -->

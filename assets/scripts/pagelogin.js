@@ -51,6 +51,9 @@ loginForm.addEventListener("submit", (e) => {
     .then(async (response) => {
         if (!response.ok) {
             /* Gestion des erreurs en cas de réponse non réussie du serveur */
+            if (response.status == 401 || response.status == 404) {
+                messageError.textContent = "Erreur email ou mot de passe";
+            }
             const error = await response.json();
             throw new Error(`Erreur lors de la requête : ${error.message}`);
         }
