@@ -149,11 +149,18 @@ const boutonAjouter = document.querySelector(".button-add-work");
 let fileRempli = false 
 let titleRempli = false
 let categoryRempli = false
+// variable pour les changements de classe quand la photo se met
+const fileVisibility = document.querySelector(".labelFile");
+const pVisibility = document.querySelector(".containerAjouterPhoto p");
 
 file.addEventListener("input" , () => {
     console.log("change" + file);
     if (file.value) {
         fileRempli = true 
+        previewPicture(file);
+        previewImage.style.display = "flex"
+        fileVisibility.style.visibility = "hidden"
+        pVisibility.style.visibility = "hidden"
     } else {
         fileRempli = false
     }
@@ -239,12 +246,16 @@ formAddWorks.addEventListener("submit" , (e) => {
             throw new Error(`Erreur lors de la requête : ${error.message}`);
         }
         return response.json(); 
+        
     })
     
     
     .then((data) => {
      
     console.log(data);
+    containerModaleAjouter.remove();
+    containerModale.remove();
+    creationTableauPagePrincipale();
     
     })
     
@@ -256,6 +267,20 @@ formAddWorks.addEventListener("submit" , (e) => {
 })
 
 
+////////////////////////// previsualisation image dans la modale
 
 
+const previewImage = document.getElementById("previewImage");
+     
+    // La fonction previewPicture
+    var previewPicture  = function (e) {
 
+        // e.files contient un objet FileList
+        const [picture] = e.files
+
+        // "picture" est un objet File
+        if (picture) {
+            // On change l'URL de l'image
+            previewImage.src = URL.createObjectURL(picture)
+        }
+    }
