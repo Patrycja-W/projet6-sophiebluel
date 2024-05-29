@@ -189,9 +189,11 @@ category.addEventListener("change" , () => {
     }
     console.log(categoryRempli);
     if (fileRempli && titleRempli && categoryRempli) {
-        boutonAjouter.disabled = false
+        boutonAjouter.disabled = false;
+        boutonAjouter.classList.add("boutonVert")
     } else {
         boutonAjouter.disabled = true
+        boutonAjouter.classList.remove("boutonVert")
     }
 })
 
@@ -221,7 +223,6 @@ formAddWorks.addEventListener("submit" , (e) => {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
           "accept": "application/json"
         },
         body: donneesFormulaires,
@@ -253,5 +254,8 @@ formAddWorks.addEventListener("submit" , (e) => {
     });
 
 })
+
+
+
 
 
