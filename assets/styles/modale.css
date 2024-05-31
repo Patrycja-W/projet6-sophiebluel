@@ -129,8 +129,7 @@
     font-weight: 400;
     display: flex;
     justify-content: center;
-    margin-top: 25px;
-    margin-bottom: 15px;
+
 }
 
 .modaleAjouter .fa-xmark {
@@ -170,7 +169,7 @@
     justify-content: space-evenly;
     width: 75%;
   height: 450px;
-  border-bottom: solid 2px rgba(128, 128, 128, 0.222);
+
   }
 
 
@@ -273,4 +272,13 @@
        
        .boutonVert {
         background-color: rgba(29, 97, 84, 1);
+       }
+
+
+
+       .ooo{
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid 2px rgba(128, 128, 128, 0.222);
+        padding-bottom: 40px;
        }

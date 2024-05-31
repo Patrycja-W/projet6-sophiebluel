@@ -253,9 +253,10 @@ formAddWorks.addEventListener("submit" , (e) => {
     .then((data) => {
      
     console.log(data);
-    containerModaleAjouter.remove();
-    containerModale.remove();
+    containerModaleAjouter.style.display = "none";
+    containerModale.style.display = "none";
     creationTableauPagePrincipale();
+    creationTableauModale();
     
     })
     

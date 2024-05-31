@@ -38,22 +38,24 @@
             </div>
             <h3>Ajout photo</h3>
 			<form id="formAddWorks">
-				<div class="containerAjouterPhoto">
-					<i class="fa-regular fa-image"></i>
-					<label for="file" class="labelFile">+ Ajouter photo</label>
-					<p>jpg, png : 4mo max</p>
-					<input type="file" name="image" id="file" accept="image/jpg, image/png" required>
-					<img id="previewImage" src="#" alt="Aperçu de l'image">
+				<div class="ooo">
+					<div class="containerAjouterPhoto">
+						<i class="fa-regular fa-image"></i>
+						<label for="file" class="labelFile">+ Ajouter photo</label>
+						<p>jpg, png : 4mo max</p>
+						<input type="file" name="image" id="file" accept="image/jpg, image/png" required>
+						<img id="previewImage" src="#" alt="Aperçu de l'image">
+					</div>
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title" required>
+					<label for="categoryInput">Catégorie</label>
+					<select id="categoryInput" name="category" required>
+						<option value=""></option>
+						<option value=1>Objets</option>
+						<option value=2>Appartements</option>
+						<option value=3>Hotels & restaurants</option>
+					</select>
 				</div>
-				<label for="title">Titre</label>
-				<input type="text" name="title" id="title" required>
-				<label for="categoryInput">Catégorie</label>
-				<select id="categoryInput" name="category" required>
-					<option value=""></option>
-					<option value=1>Objets</option>
-					<option value=2>Appartements</option>
-					<option value=3>Hotels & restaurants</option>
-				</select>
 				<button type="submit" class="button-add-work" disabled>Valider</button>
 			</form>
 

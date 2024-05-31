@@ -4,19 +4,14 @@ const loginForm = document.querySelector("form");
 const messageError = document.querySelector("form #error-message");
 
 
-/*===== PROCESS LOGIN =====*/
-/* Ajout un écouteur d'événement pour le formulaire de connexion */
+
 loginForm.addEventListener("submit", (e) => {
     
-    /* Empêche que le formulaire de connexion recharge la page */
     e.preventDefault();
 
-    /* Récupère les valeurs des champs email et password saisies par l'utilisateur */
     const userEmail = emailInput.value;
     const userPassword = passwordInput.value;
 
-    /* Vérification si les champs sont vides. Affiche un message d'erreur 
-    si l'un des champs est vide et arrête l'exécution */
     if (!userEmail || !userPassword) {
         messageError.textContent = "Tout les champs doivent etre remplis";
         return;
@@ -34,17 +29,16 @@ loginForm.addEventListener("submit", (e) => {
 
     /* Envoi d'une requête POST au serveur pour l'authentification de l'utilisateur */
     fetch("http://localhost:5678/api/users/login", {
-        method: "POST", /* Méthode de la requête HTTP */
-        mode: "cors", /* Mode CORS (Cross-Origin Resource Sharing) pour permettre des requêtes depuis un autre domaine */
-        credentials: "same-origin", /* Utilise les mêmes informations d'identification que la ressource appelante */
-        headers: { "Content-Type": "application/json" }, /* En-têtes de la requête indiquant que le contenu est au format JSON */
-        body: user, /* Corps de la requête contenant les données utilisateur au format JSON */
+        method: "POST", 
+        mode: "cors", 
+        credentials: "same-origin", 
+        headers: { "Content-Type": "application/json" }, 
+        body: user, 
     })
 
     /* Traitement de la réponse de la requête */
     .then(async (response) => {
         if (!response.ok) {
-            /* Gestion des erreurs en cas de réponse non réussie du serveur */
             if (response.status == 401 || response.status == 404) {
                 messageError.textContent = "Erreur email ou mot de passe";
             }
@@ -56,14 +50,12 @@ loginForm.addEventListener("submit", (e) => {
 
     /* Traitement des données retournées par le serveur après authentification réussie */
     .then((data) => {
-        /* Récupation du token et de l'ID de l'utilisateur de la réponse JSON */
+
         const { userId, token: userToken } = data;
         
-        /* Stockage du token et de l'ID de l'utilisateur dans la sessionStorage du navigateur */
         window.sessionStorage.setItem("token", userToken, "userId", userId);
-        window.sessionStorage.setItem("loged", "true"); /* Ajout d'une indication de connexion */
-        
-        /* Redirection de l'utilisateur vers la page index.html après une authentification réussie */
+        window.sessionStorage.setItem("loged", "true"); 
+
         window.location.href = "./index.html";
     })
 

@@ -156,6 +156,9 @@ li:hover {
 #contact {
 	width: 50%;
 margin: auto;
+display: flex;
+align-items: center;
+flex-direction: column;
 }
 #contact > * {
 	text-align: center;
