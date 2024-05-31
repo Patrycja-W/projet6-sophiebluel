@@ -108,7 +108,6 @@ async function creationImagesModale (element) {
         modalePhotos.appendChild(figure)
 
         poubelle.addEventListener("click", () =>{
-            // console.log(element.id)
             deleteWork(element.id);
         })
 }
@@ -129,10 +128,8 @@ const header = {
   };
 
 function deleteWork(id) {
-console.log("id " + id );
         fetch(`http://localhost:5678/api/works/${id}`, header).then(
           (response) => {
-            console.log(response);
             creationTableauModale();
             creationTableauPagePrincipale();
           }
@@ -154,7 +151,6 @@ const fileVisibility = document.querySelector(".labelFile");
 const pVisibility = document.querySelector(".containerAjouterPhoto p");
 
 file.addEventListener("input" , () => {
-    console.log("change" + file);
     if (file.value) {
         fileRempli = true 
         previewPicture(file);
@@ -164,7 +160,6 @@ file.addEventListener("input" , () => {
     } else {
         fileRempli = false
     }
-    console.log(fileRempli);
     if (fileRempli && titleRempli && categoryRempli) {
         boutonAjouter.disabled = false
     } else {
@@ -173,13 +168,11 @@ file.addEventListener("input" , () => {
 })
 
 title.addEventListener("input" , () => {
-    console.log("change" + title);
     if (title.value) {
         titleRempli = true 
     } else {
         titleRempli = false
     }
-    console.log(titleRempli);
     if (fileRempli && titleRempli && categoryRempli) {
         boutonAjouter.disabled = false
     } else {
@@ -188,13 +181,12 @@ title.addEventListener("input" , () => {
 })
 
 category.addEventListener("change" , () => {
-    console.log("change" + category);
     if (category.value) {
         categoryRempli = true 
     } else {
         categoryRempli = false
     }
-    console.log(categoryRempli);
+
     if (fileRempli && titleRempli && categoryRempli) {
         boutonAjouter.disabled = false;
         boutonAjouter.classList.add("boutonVert")
@@ -210,21 +202,13 @@ formAddWorks.addEventListener("submit" , (e) => {
     const valeurTitle = title.value;
     const valeurCategory = category.value;  
     const valeurImage = file.value;
-    console.log(file);
-    console.log(title);
-    console.log(category);
-    console.log(valeurTitle);
-    console.log(valeurCategory);
-    console.log(valeurImage);
 
     const donneesFormulaires = new FormData();
 
     donneesFormulaires.append("category" , valeurCategory);
     donneesFormulaires.append("image", file.files[0]); 
     donneesFormulaires.append("title" , valeurTitle)
-    console.log(donneesFormulaires.get("category"));
-    console.log(donneesFormulaires.get("image"));
-    console.log(donneesFormulaires.get("title"));
+
 
     const headerPost = {
         method: "POST",
@@ -239,7 +223,7 @@ formAddWorks.addEventListener("submit" , (e) => {
        headerPost 
     )
       .then(async (response) => {
-        console.log(response);
+
         if (!response.ok) {
        
             const error = await response.json();
@@ -252,7 +236,7 @@ formAddWorks.addEventListener("submit" , (e) => {
     
     .then((data) => {
      
-    console.log(data);
+
     containerModaleAjouter.style.display = "none";
     containerModale.style.display = "none";
     creationTableauPagePrincipale();
@@ -268,7 +252,7 @@ formAddWorks.addEventListener("submit" , (e) => {
 })
 
 
-////////////////////////// previsualisation image dans la modale
+////// previsualisation image dans la modale
 
 
 const previewImage = document.getElementById("previewImage");

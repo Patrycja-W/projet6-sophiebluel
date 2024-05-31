@@ -8,11 +8,11 @@ const filtres = document.querySelector(".filtres")
 async function toutLesProjets () {
     const reponse = await fetch ("http://localhost:5678/api/works");
     return await reponse.json();
-
 }
 toutLesProjets();
 
-// affichage des works dans le DOM,boucle forEach pour recuperer chaque element du tableau et exécute la fonction de rappel définie
+
+// affichage des projets dans le DOM,boucle forEach pour recuperer chaque element du tableau
 
 async function creationTableauPagePrincipale () {
     gallery.innerHTML = "";
