@@ -90,6 +90,7 @@ async function filtrerCategories() {
 }
 filtrerCategories();
 
+// pour la connextion : page login
 // si utilisateur est connecte alors on affiche Logout
 
 

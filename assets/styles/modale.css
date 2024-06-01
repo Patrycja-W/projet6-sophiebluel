@@ -161,7 +161,7 @@
 }
 
 
-  /* modale formulaireeeeeeeeeeeeeeeeeeeeee */
+  /* modale formulaire */
 
   form {
     display: flex;
@@ -241,17 +241,6 @@
    }
 
 
-      .buttonValidForm {
-        background-color: #1d6154;
-        padding: 9px 50px;
-        border-radius: 25px;
-        color: white;
-        font-weight: 700;
-        font-size: 1rem;
-        font-family: Syne;
-        cursor: pointer;
-      }
-
       .button-add-work {
         display: flex;
         justify-content: center;
@@ -276,7 +265,7 @@
 
 
 
-       .ooo{
+       .flexEtBorder{
         display: flex;
         flex-direction: column;
         border-bottom: solid 2px rgba(128, 128, 128, 0.222);

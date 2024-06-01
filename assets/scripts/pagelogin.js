@@ -5,10 +5,10 @@ const messageError = document.querySelector("form #error-message");
 
 
 
+/* Ajout un écouteur d'événement pour le formulaire de connexion */
 loginForm.addEventListener("submit", (e) => {
     
     e.preventDefault();
-
     const userEmail = emailInput.value;
     const userPassword = passwordInput.value;
 
@@ -27,7 +27,7 @@ loginForm.addEventListener("submit", (e) => {
     const user = JSON.stringify(login);
 
 
-    /* Envoi d'une requête POST au serveur pour l'authentification de l'utilisateur */
+
     fetch("http://localhost:5678/api/users/login", {
         method: "POST", 
         mode: "cors", 
@@ -36,30 +36,30 @@ loginForm.addEventListener("submit", (e) => {
         body: user, 
     })
 
-    /* Traitement de la réponse de la requête */
+
     .then(async (response) => {
         if (!response.ok) {
+
             if (response.status == 401 || response.status == 404) {
                 messageError.textContent = "Erreur email ou mot de passe";
             }
             const error = await response.json();
             throw new Error(`Erreur lors de la requête : ${error.message}`);
         }
-        return response.json(); /* Passe la réponse HTTP en JSON en cas de succès */
+        return response.json(); 
     })
 
-    /* Traitement des données retournées par le serveur après authentification réussie */
-    .then((data) => {
 
+    .then((data) => {
         const { userId, token: userToken } = data;
         
+        /* Stockage du token et de l'ID de l'utilisateur dans la sessionStorage du navigateur */
         window.sessionStorage.setItem("token", userToken, "userId", userId);
-        window.sessionStorage.setItem("loged", "true"); 
-
+        window.sessionStorage.setItem("loged", "true"); /* Ajout d'une indication de connexion */
+        
         window.location.href = "./index.html";
     })
 
-    /* Gestion des erreurs lors de la requête ou du traitement des données */
     .catch((error) => {
         console.error("Une erreur s'est produite lors de la récupération des données", error);
     });
