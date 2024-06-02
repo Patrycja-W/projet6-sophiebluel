@@ -54,8 +54,10 @@ loginForm.addEventListener("submit", (e) => {
         const { userId, token: userToken } = data;
         
         /* Stockage du token et de l'ID de l'utilisateur dans la sessionStorage du navigateur */
-        window.sessionStorage.setItem("token", userToken, "userId", userId);
-        window.sessionStorage.setItem("loged", "true"); /* Ajout d'une indication de connexion */
+        window.sessionStorage.setItem("token", userToken);
+        window.sessionStorage.setItem("userId", userId);
+
+        window.sessionStorage.setItem("loged", "true"); 
         
         window.location.href = "./index.html";
     })
