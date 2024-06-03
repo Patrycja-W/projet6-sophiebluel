@@ -231,17 +231,9 @@
       background-color: white;
         border-style: none;
     }
-    .container-button-add-work {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100px;
-      width: 100%;
-      border-top: 1px solid gray;
-   }
 
 
-      .button-add-work {
+      .bouton-valider-projet {
         display: flex;
         justify-content: center;
         align-items: center;

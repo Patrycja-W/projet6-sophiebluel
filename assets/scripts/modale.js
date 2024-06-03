@@ -142,7 +142,7 @@ const formAddWorks = document.querySelector("#formAddWorks");
 const file = document.querySelector("#file");
 const title = document.querySelector("#title");
 const category = document.querySelector("#categoryInput");
-const boutonAjouter = document.querySelector(".button-add-work");
+const boutonAjouter = document.querySelector(".bouton-valider-projet");
 let fileRempli = false 
 let titleRempli = false
 let categoryRempli = false
@@ -150,6 +150,7 @@ let categoryRempli = false
 const fileVisibility = document.querySelector(".labelFile");
 const pVisibility = document.querySelector(".containerAjouterPhoto p");
 
+// ecouteur devenement pour limage
 file.addEventListener("input" , () => {
     if (file.value) {
         fileRempli = true 
@@ -167,6 +168,7 @@ file.addEventListener("input" , () => {
     }
 })
 
+// ecouteur devenement pour le titre de limage
 title.addEventListener("input" , () => {
     if (title.value) {
         titleRempli = true 
@@ -180,6 +182,7 @@ title.addEventListener("input" , () => {
     }
 })
 
+// ecouteur devenement pour les categories
 category.addEventListener("change" , () => {
     if (category.value) {
         categoryRempli = true 
@@ -196,6 +199,7 @@ category.addEventListener("change" , () => {
     }
 })
 
+// ecouteur devenement pour le formulaire / sousmission
 formAddWorks.addEventListener("submit" , (e) => {
     e.preventDefault();
 
