@@ -41,7 +41,7 @@ loginForm.addEventListener("submit", (e) => {
         if (!response.ok) {
 
             if (response.status == 401 || response.status == 404) {
-                messageError.textContent = "Erreur email ou mot de passe";
+                messageError.textContent = "Erreur dans l’identifiant ou le mot de passe";
             }
             const error = await response.json();
             throw new Error(`Erreur lors de la requête : ${error.message}`);
