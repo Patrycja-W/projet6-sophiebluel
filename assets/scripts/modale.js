@@ -205,7 +205,6 @@ formAddWorks.addEventListener("submit" , (e) => {
 
     const valeurTitle = title.value;
     const valeurCategory = category.value;  
-    const valeurImage = file.value;
 
     const donneesFormulaires = new FormData();
 
@@ -240,7 +239,6 @@ formAddWorks.addEventListener("submit" , (e) => {
     
     .then((data) => {
      
-
     containerModaleAjouter.style.display = "none";
     containerModale.style.display = "none";
     creationTableauPagePrincipale();
