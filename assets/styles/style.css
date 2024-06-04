@@ -234,6 +234,11 @@ footer nav ul {
 	background-color:#1D6154 ;
 }
 
+.filtres button.active {
+	color: white;
+	background-color:#1D6154 ;
+}
+
 /* page de connexion */
 
 .container {
@@ -313,4 +318,22 @@ input[type=submit]:hover {
 
 #error-message {
 	color: red;
+}
+
+.modeEdition {
+	background-color: black;
+    height: 59px;
+    width: 1440px;
+    color: white;
+    position: relative;
+    left: -150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	font-size: 16px;
+	display: none;
+}
+
+.modeEdition i {
+	margin-right: 15px;
 }

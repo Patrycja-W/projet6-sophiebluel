@@ -73,6 +73,8 @@ async function filtrerCategories() {
         element.addEventListener("click",(e) =>{
            let boutonsID = e.target.id;
            gallery.innerHTML = "";
+           boutons.forEach(btn => btn.classList.remove("active"));
+           e.target.classList.add("active");
            if (boutonsID !== "0") {
             const triCategories = lesProjets.filter((projet) =>{
                 return projet.categoryId == boutonsID;
@@ -86,6 +88,7 @@ async function filtrerCategories() {
            }
         })
     });
+
     
 }
 filtrerCategories();
@@ -97,8 +100,10 @@ filtrerCategories();
 const loged = window.sessionStorage.loged;
 const logout = document.querySelector(".logout")
 const modifier = document.querySelector(".modifier")
+const modeEdition = document.querySelector(".modeEdition")
 
 if (loged == "true") {
+    modeEdition.style.display = "flex"
     logout.textContent = "logout"
     logout.addEventListener("click", ()=>{
         window.sessionStorage.loged = false;
@@ -106,3 +111,8 @@ if (loged == "true") {
     modifier.style.display = "flex";
     filtres.style.display = "none"
 }
+
+
+modifier.addEventListener("click",() =>{
+    apparitionModale();
+})

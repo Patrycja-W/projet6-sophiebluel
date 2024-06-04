@@ -2,25 +2,34 @@
 
 const containerModale = document.querySelector(".containerModale")
 
-modifier.addEventListener("click",() =>{
-    containerModale.style.display = "flex"
-})
+function apparitionModale() {
+    console.log("utilisation apparitin modale");
+    containerModale.style.display = "flex";
+}
+console.log("saaaluuuuttttt " + apparitionModale);
+
+
 
 // fermer la modale au click sur la croix
 
-const croix = document.querySelector(".containerModale .fa-xmark")
+const croix = document.querySelector(".croix")
+console.log("oaoaoaoaoa"+croix);
+if (croix) {
+    croix.addEventListener("click",() =>{
+        containerModale.style.display = "none"
+    })
+}
 
-croix.addEventListener("click",() =>{
-    containerModale.style.display = "none"
-})
 
 // fermer la modale au click sur les contours de la modale
+if (containerModale) {
+    containerModale.addEventListener("click",(e)=>{
+        if (e.target.className == "containerModale") {
+            containerModale.style.display = "none"
+        }
+    })
+}
 
-containerModale.addEventListener("click",(e)=>{
-    if (e.target.className == "containerModale") {
-        containerModale.style.display = "none"
-    }
-})
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -28,36 +37,48 @@ containerModale.addEventListener("click",(e)=>{
 
 const bouttonAjouter = document.querySelector(".addPhotoBtn")
 const containerModaleAjouter = document.querySelector(".containerModaleAjouter")
+if (bouttonAjouter) {
+    bouttonAjouter.addEventListener("click",() =>{
+        containerModaleAjouter.style.display = "flex"
+        
+    })
+}
 
-bouttonAjouter.addEventListener("click",() =>{
-    containerModaleAjouter.style.display = "flex"
-})
 
 // fermer la modale au click sur la croix
 
 const croix2 = document.querySelector(".containerModaleAjouter .fa-xmark")
+if (croix2) {
+    croix2.addEventListener("click",() =>{
+        containerModaleAjouter.style.display = "none";
+        containerModale.style.display = "none";
+        reset();
+    })
+}
 
-croix2.addEventListener("click",() =>{
-    containerModaleAjouter.style.display = "none";
-    containerModale.style.display = "none";
-})
 
 // fermer la modale au click sur les contours de la modale
+if (containerModaleAjouter) {
+    containerModaleAjouter.addEventListener("click",(e)=>{
+        if (e.target.className == "containerModaleAjouter") {
+            containerModaleAjouter.style.display = "none"
+            containerModale.style.display = "none";
+            reset();
+        }
+    })
+}
 
-containerModaleAjouter.addEventListener("click",(e)=>{
-    if (e.target.className == "containerModaleAjouter") {
-        containerModaleAjouter.style.display = "none"
-        containerModale.style.display = "none";
-    }
-})
 
 // revenir sur la page "galerie photo" au click
 
 const fleche = document.querySelector(".icones .fa-arrow-left")
+if (fleche) {
+    fleche.addEventListener("click",() =>{
+        containerModaleAjouter.style.display = "none";
+        reset();
+    })
+}
 
-fleche.addEventListener("click",() =>{
-    containerModaleAjouter.style.display = "none";
-})
 
 
 /////////////////////////////////////////////////
@@ -85,7 +106,10 @@ async function creationTableauModale () {
     });
     
 }
-creationTableauModale();
+if (modalePhotos) {
+    creationTableauModale();
+}
+
 
 
 async function creationImagesModale (element) {
@@ -149,109 +173,122 @@ let categoryRempli = false
 // variable pour les changements de classe quand la photo se met
 const fileVisibility = document.querySelector(".labelFile");
 const pVisibility = document.querySelector(".containerAjouterPhoto p");
+const iVisibility = document.querySelector(".containerAjouterPhoto i")
 
 // ecouteur devenement pour limage
-file.addEventListener("input" , () => {
-    if (file.value) {
-        fileRempli = true 
-        previewPicture(file);
-        previewImage.style.display = "flex"
-        fileVisibility.style.visibility = "hidden"
-        pVisibility.style.visibility = "hidden"
-    } else {
-        fileRempli = false
-    }
-    if (fileRempli && titleRempli && categoryRempli) {
-        boutonAjouter.disabled = false
-    } else {
-        boutonAjouter.disabled = true
-    }
-})
+if (file) {
+    file.addEventListener("input" , () => {
+        if (file.value) {
+            fileRempli = true 
+            previewPicture(file);
+            previewImage.style.display = "flex"
+            fileVisibility.style.visibility = "hidden"
+            pVisibility.style.visibility = "hidden"
+            iVisibility.style.visibility = "hidden"
+        } else {
+            fileRempli = false
+        }
+        if (fileRempli && titleRempli && categoryRempli) {
+            boutonAjouter.disabled = false
+        } else {
+            boutonAjouter.disabled = true
+        }
+    })
+}
+
 
 // ecouteur devenement pour le titre de limage
-title.addEventListener("input" , () => {
-    if (title.value) {
-        titleRempli = true 
-    } else {
-        titleRempli = false
-    }
-    if (fileRempli && titleRempli && categoryRempli) {
-        boutonAjouter.disabled = false
-    } else {
-        boutonAjouter.disabled = true
-    }
-})
+if (title) {
+    title.addEventListener("input" , () => {
+        if (title.value) {
+            titleRempli = true 
+        } else {
+            titleRempli = false
+        }
+        if (fileRempli && titleRempli && categoryRempli) {
+            boutonAjouter.disabled = false
+        } else {
+            boutonAjouter.disabled = true
+        }
+    })
+}
+
 
 // ecouteur devenement pour les categories
-category.addEventListener("change" , () => {
-    if (category.value) {
-        categoryRempli = true 
-    } else {
-        categoryRempli = false
-    }
-
-    if (fileRempli && titleRempli && categoryRempli) {
-        boutonAjouter.disabled = false;
-        boutonAjouter.classList.add("boutonVert")
-    } else {
-        boutonAjouter.disabled = true
-        boutonAjouter.classList.remove("boutonVert")
-    }
-})
+if (category) {
+    category.addEventListener("change" , () => {
+        if (category.value) {
+            categoryRempli = true 
+        } else {
+            categoryRempli = false
+        }
+    
+        if (fileRempli && titleRempli && categoryRempli) {
+            boutonAjouter.disabled = false;
+            boutonAjouter.classList.add("boutonVert")
+        } else {
+            boutonAjouter.disabled = true
+            boutonAjouter.classList.remove("boutonVert")
+        }
+    })
+}
 
 // ecouteur devenement pour le formulaire / sousmission
-formAddWorks.addEventListener("submit" , (e) => {
-    e.preventDefault();
-
-    const valeurTitle = title.value;
-    const valeurCategory = category.value;  
-
-    const donneesFormulaires = new FormData();
-
-    donneesFormulaires.append("category" , valeurCategory);
-    donneesFormulaires.append("image", file.files[0]); 
-    donneesFormulaires.append("title" , valeurTitle)
-
-
-    const headerPost = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "accept": "application/json"
-        },
-        body: donneesFormulaires,
-      };
-
-      fetch("http://localhost:5678/api/works", 
-       headerPost 
-    )
-      .then(async (response) => {
-
-        if (!response.ok) {
-       
-            const error = await response.json();
-            throw new Error(`Erreur lors de la requête : ${error.message}`);
-        }
-        return response.json(); 
+if (formAddWorks) {
+    formAddWorks.addEventListener("submit" , (e) => {
+        e.preventDefault();
+    
+        const valeurTitle = title.value;
+        const valeurCategory = category.value;  
+    
+        const donneesFormulaires = new FormData();
+    
+        donneesFormulaires.append("category" , valeurCategory);
+        donneesFormulaires.append("image", file.files[0]); 
+        donneesFormulaires.append("title" , valeurTitle)
+    
+    
+        const headerPost = {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "accept": "application/json"
+            },
+            body: donneesFormulaires,
+          };
+    
+          fetch("http://localhost:5678/api/works", 
+           headerPost 
+        )
+          .then(async (response) => {
+    
+            if (!response.ok) {
+           
+                const error = await response.json();
+                throw new Error(`Erreur lors de la requête : ${error.message}`);
+            }
+            return response.json(); 
+            
+        })
         
+        
+        .then((data) => {
+         
+        containerModaleAjouter.style.display = "none";
+        containerModale.style.display = "none";
+        creationTableauPagePrincipale();
+        creationTableauModale();
+        reset();
+        
+        })
+        
+        
+        .catch((error) => {
+            console.error("Une erreur s'est produite", error);
+        });
+    
     })
-    
-    
-    .then((data) => {
-     
-    containerModaleAjouter.style.display = "none";
-    containerModale.style.display = "none";
-    creationTableauPagePrincipale();
-    creationTableauModale();
-    
-    })
-    
-    
-    .catch((error) => {
-        console.error("Une erreur s'est produite", error);
-    });
-
-})
+}
 
 
 ////// previsualisation image dans la modale
@@ -271,3 +308,11 @@ const previewImage = document.getElementById("previewImage");
             previewImage.src = URL.createObjectURL(picture)
         }
     }
+
+function reset() {
+    formAddWorks.reset();
+    previewImage.style.display = "none"
+    fileVisibility.style.visibility = "visible"
+    pVisibility.style.visibility = "visible"
+    iVisibility.style.visibility = "visible"
+}

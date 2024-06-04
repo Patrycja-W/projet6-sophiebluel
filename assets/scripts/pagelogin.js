@@ -66,4 +66,3 @@ loginForm.addEventListener("submit", (e) => {
         console.error("Une erreur s'est produite lors de la récupération des données", error);
     });
 });
-
